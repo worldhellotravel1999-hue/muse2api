@@ -1,25 +1,17 @@
 {
-  "version": "1.6.4",
-  "updated_at": "2026-10-26",
+  "version": "1.6.6",
+  "updated_at": "2026-11-02",
   "repo": "https://github.com/czg86389-hub/muse2api",
   "highlights": [
-    "修复 Chrome 扩展和独立 Cookie 助手仍强制要求 hatch_gw 的问题；现在与服务端一致，只要求核心会话令牌。",
-    "修复视频遭 Muse 纯文字拒答时等待满 600 秒：稳定识别地区不可用等拒答并向调用方返回原文，长期无响应任务也会提前终止。",
-    "视频任务进度改为真实页面里程碑，不再用等待时间伪装成 92% 完成度。",
-    "合并 PR #32：图片生成、图片编辑与图生视频支持最多 4 张有序参考图。",
-    "多参考图增加字段冲突、无效项、MIME、单图 10 MiB 与总计 24 MiB 限制，并限定 composer 内附件计数。",
-    "参考图默认禁止服务器本地路径及私网/本机 URL；公网下载逐跳复查重定向并固定已验证 IP，可由可信管理员显式恢复旧能力。",
-    "修复同一账号连续查询额度时复用上次 Settings UI 导致的偶发失败；每次额度读取现在使用独立一次性页面，避免账号串页和菜单残留。",
-    "修复浏览器扩展下载包遗漏 _locales 子目录的问题，确保中英文扩展名称与说明随 ZIP 正确发布。"
+    "【重要：请手动升级浏览器插件至 1.0.2】更新服务不会自动更新已加载的扩展；替换原扩展目录文件，再到 chrome://extensions 或 edge://extensions 点击重新加载。不同浏览器个人资料需要分别升级。",
+    "修复已登录且能够聊天的账号因缺少 hatch_vml / hatch_gw 被旧插件错误阻止导入的问题；所有导入端与服务端现在只要求 hatch_sess。",
+    "油猴脚本同步升级至 1.1.2；重新导入后请点击账号“测试”。导入成功只表示记录已保存，实际可用性仍以上游会话验证为准。",
+    "保留无效会话 HTTP 401 拒绝和 unavailable 未确认状态；不会将凭据齐全或导入成功误报为账号可用。"
   ],
   "highlights_en": [
-    "Fixed the Chrome extension and standalone cookie helper incorrectly requiring hatch_gw; import requirements now match the server.",
-    "Video tasks now surface stable Muse text refusals such as regional unavailability instead of waiting the full 600-second timeout; stalled new-thread submissions also stop early.",
-    "Video progress now reports observed page milestones rather than a time-based fake 92%.",
-    "Merged PR #32: image generation, edits, and image-to-video accept up to four ordered reference images.",
-    "Added conflict, item, MIME, per-image 10 MiB and aggregate 24 MiB validation, plus composer-scoped attachment counting.",
-    "Reference images now deny server-local paths and private/loopback URLs by default; public downloads recheck every redirect and pin the validated IP, with explicit trusted-admin opt-ins for legacy access.",
-    "Fixed intermittent failures on consecutive quota reads by using a fresh disposable page for every read, preventing stale Settings UI and cross-account page reuse.",
-    "Fixed extension ZIP packaging so nested _locales resources are included and English/Chinese metadata ships correctly."
+    "IMPORTANT: manually upgrade the extension to 1.0.2. Updating the service does not update unpacked extensions. Replace files in the original folder, then click Reload at chrome://extensions or edge://extensions. Upgrade each browser profile separately.",
+    "Fixed valid logged-in accounts being blocked when hatch_vml or hatch_gw was absent. All importers and the server now require only hatch_sess.",
+    "Updated the userscript to 1.1.2. Re-import, then run the account Test. Import success means the record was saved; upstream verification determines usability.",
+    "Invalid sessions still fail with HTTP 401, while unavailable remains inconclusive. Cookie presence or import success is never proof of a working account."
   ]
 }
